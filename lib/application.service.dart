@@ -19,11 +19,16 @@ class ApplicationService {
     required List<Application> applications,
     required String query,
   }) {
+    query = query.toLowerCase().replaceAll(' ', '');
+
+    if (query.isEmpty) return [];
+    if (query == 'all') return applications;
+
     return applications
         .where((application) => application.appName
             .toLowerCase()
             .replaceAll(' ', '')
-            .contains(query.toLowerCase().replaceAll(' ', '')))
+            .contains(query))
         .toList();
   }
 }
