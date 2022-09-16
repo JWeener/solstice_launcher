@@ -1,5 +1,6 @@
 import 'package:device_apps/device_apps.dart';
 import 'package:flutter/widgets.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 class ApplicationView extends StatelessWidget {
   const ApplicationView({
@@ -17,10 +18,12 @@ class ApplicationView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.memory(application.icon),
-          Text(
+          TextScroll(
             application.appName,
-            softWrap: false,
-            overflow: TextOverflow.fade,
+            mode: TextScrollMode.bouncing,
+            velocity: const Velocity(pixelsPerSecond: Offset(50, 0)),
+            delayBefore: const Duration(seconds: 1),
+            pauseBetween: const Duration(seconds: 2),
           ),
         ],
       ),
