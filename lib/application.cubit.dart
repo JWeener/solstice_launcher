@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'application.service.dart';
 
-class ApplicationCubit extends Cubit<List<Application>> {
+class ApplicationCubit extends Cubit<List<ApplicationWithIcon>> {
   ApplicationCubit({
     required ApplicationService applicationService,
   })  : _applicationService = applicationService,
@@ -16,7 +16,7 @@ class ApplicationCubit extends Cubit<List<Application>> {
     emit(apps);
   }
 
-  List<Application> searchApplications(String query) {
+  List<ApplicationWithIcon> searchApplications(String query) {
     return _applicationService.searchApplications(
       applications: state,
       query: query,

@@ -13,7 +13,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  List<Application> filteredApplications = [];
+  List<ApplicationWithIcon> filteredApplications = [];
 
   void updateFilteredApplications(query) {
     setState(() {
@@ -28,7 +28,9 @@ class _SearchPageState extends State<SearchPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ResultsView(applications: filteredApplications),
+        Expanded(
+          child: ResultsView(applications: filteredApplications),
+        ),
         SearchView(onSearch: updateFilteredApplications),
       ],
     );

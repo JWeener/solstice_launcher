@@ -8,15 +8,15 @@ class ApplicationService {
 
   final ApplicationRepository _applicationRepository;
 
-  Future<List<Application>> loadApplications() async {
-    List<Application> applications =
+  Future<List<ApplicationWithIcon>> loadApplications() async {
+    List<ApplicationWithIcon> applications =
         await _applicationRepository.getApplications();
     applications.sort((a, b) => a.appName.compareTo(b.appName));
     return applications;
   }
 
-  List<Application> searchApplications({
-    required List<Application> applications,
+  List<ApplicationWithIcon> searchApplications({
+    required List<ApplicationWithIcon> applications,
     required String query,
   }) {
     query = query.toLowerCase().replaceAll(' ', '');
